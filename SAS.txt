@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Hola Mundo --- Paola Echeverry 
+=======
+Hola mundo - Saludos de Ignacio Navarro
+>>>>>>> 9a6e07a3a1c4a47a0748ec8e9d12a3995ef7b6dc
