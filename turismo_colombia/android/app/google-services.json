@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "968414616965",
+    "project_id": "turismo-colombiapp",
+    "storage_bucket": "turismo-colombiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968414616965:android:e0f3fcbca797f5ebb0f8ec",
+        "android_client_info": {
+          "package_name": "edu.UdA.turismo_colombia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968414616965-4tjcegqnbvqkaoqi5c4nifsoq9qvb17r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa0idiMMN14ba1StAS6dHxufzxkvUb0Gg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968414616965-4tjcegqnbvqkaoqi5c4nifsoq9qvb17r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "968414616965-6gfavre1n1h63u7de72vdi7fvs78p2jk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "edu.UdA.turismoColombia"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
