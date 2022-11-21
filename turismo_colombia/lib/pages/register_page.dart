@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 //import 'package:intl/intl.dart';
 
@@ -7,7 +5,6 @@ import 'package:turismo_colombia/repository/firebase_api.dart';
 
 import '../models/user.dart';
 import 'login_page.dart';
-
 
 //PAGINA DE REGISTRO
 class RegisterPage extends StatefulWidget {
@@ -20,13 +17,11 @@ class RegisterPage extends StatefulWidget {
 enum Genre { masculino, femenino }
 
 class _RegisterPageState extends State<RegisterPage> {
-
   final FirebaseApi _firebaseApi = FirebaseApi();
   final _name = TextEditingController();
   final _email = TextEditingController();
   final _password = TextEditingController();
   final _repPassword = TextEditingController();
- 
 
   String buttonMsg = "Fecha de nacimiento";
   //String _date = "";
@@ -49,62 +44,81 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }*/
 
-  void _showMsg(String msg){
+  void _showMsg(String msg) {
     final Scaffold = ScaffoldMessenger.of(context);
-    Scaffold.showSnackBar(
-      SnackBar(content: Text(msg),
-      action: SnackBarAction(label: 'Aceptar', onPressed: Scaffold.hideCurrentSnackBar,)
-      )
-      );
+    Scaffold.showSnackBar(SnackBar(
+        content: Text(msg),
+        action: SnackBarAction(
+          label: 'Aceptar',
+          onPressed: Scaffold.hideCurrentSnackBar,
+        )));
   }
 
-  void _saveUser(User user) async{
-
-      var result = await _firebaseApi.createUser(user);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const LoginPage()));
+  void _saveUser(User user) async {
+    var result = await _firebaseApi.createUser(user);
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const LoginPage()));
   }
 
-void _registerUser(User user) async{
-      //TRAE EL REULTADO DE LA PAGINA DE REGISTRO 
-      var result = await _firebaseApi.registerUser(user.email, user.password);
+  void _registerUser(User user) async {
+    //TRAE EL REULTADO DE LA PAGINA DE REGISTRO
+    var result = await _firebaseApi.registerUser(user.email, user.password);
 
-      //ERRORES EN PANTALLA
-       String msg = "";
-  switch (result) {
-    case "invalid-email": {msg="El correo electrónico está mal escrito";
-    _showMsg(msg);
-     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const RegisterPage()));}
-      break;
-    case "weak-password" : {msg = "Ingrese una contraseña mínimo de 6 caracteres";
-    _showMsg(msg);Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const RegisterPage()));}
-      break;
-    case "email-already-in-use" : {msg = "El correo ya está en uso";
-    _showMsg(msg);Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const RegisterPage()));}
-      break;
-    case "network-request-failed" : {msg = "No se pudo conectar, revise su conexión a internet";
-    _showMsg(msg);Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const RegisterPage()));}
-      break;
-    default: {msg = "Usuario creado con éxito";
-    user.uid = result;
-    _saveUser(user);
-    _showMsg(msg);//Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const LoginPage()));
+    //ERRORES EN PANTALLA
+    String msg = "";
+    switch (result) {
+      case "invalid-email":
+        {
+          msg = "El correo electrónico está mal escrito";
+          _showMsg(msg);
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const RegisterPage()));
+        }
+        break;
+      case "weak-password":
+        {
+          msg = "Ingrese una contraseña mínimo de 6 caracteres";
+          _showMsg(msg);
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const RegisterPage()));
+        }
+        break;
+      case "email-already-in-use":
+        {
+          msg = "El correo ya está en uso";
+          _showMsg(msg);
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const RegisterPage()));
+        }
+        break;
+      case "network-request-failed":
+        {
+          msg = "No se pudo conectar, revise su conexión a internet";
+          _showMsg(msg);
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const RegisterPage()));
+        }
+        break;
+      default:
+        {
+          msg = "Usuario creado con éxito";
+          user.uid = result;
+          _saveUser(user);
+          _showMsg(
+              msg); //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const LoginPage()));
+        }
+        break;
     }
-    break;
   }
-
-
-}
 
 //METODO REGISTRO BOTON
-  void _onRegisterButtonClicked() { 
+  void _onRegisterButtonClicked() {
     setState(() {
-      if (_password.text == _repPassword.text){
-
-      var user = User("",_name.text, _email.text, _password.text);
-      _registerUser(user);
-      //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const LoginPage()));
-      }
-      else{
+      if (_password.text == _repPassword.text) {
+        var user = User("", _name.text, _email.text, _password.text);
+        _registerUser(user);
+        //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const LoginPage()));
+      } else {
         _showMsg("Las contraseñas no coinciden");
       }
     });
@@ -121,24 +135,35 @@ void _registerUser(User user) async{
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Padding(padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0)),
-                const Image(image: AssetImage('assets/images/logo.png'),
-                width: 100, height: 100,
+                Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0)),
+                const Image(
+                  image: AssetImage('assets/images/logo.png'),
+                  width: 100,
+                  height: 100,
                 ),
-                Padding(padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0)),
-                    const Text('Turismo Col',
-              style: TextStyle(
-                color: Colors.green, fontStyle: FontStyle.normal, fontWeight: FontWeight.w500, fontSize: 30
-              ),),
+                Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0)),
+                const Text(
+                  'Turismo Col',
+                  style: TextStyle(
+                      color: Colors.green,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 30),
+                ),
                 const SizedBox(height: 16.0 //Para agregar un espacio
                     ),
-                    
 
                 //NAME TEXTFIELD
                 TextFormField(
                   controller: _name,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Nombre', ),
+                    border: OutlineInputBorder(),
+                    labelText: 'Nombre',
+                  ),
                   keyboardType: TextInputType.text,
                 ),
                 const SizedBox(height: 16.0),
@@ -172,8 +197,7 @@ void _registerUser(User user) async{
                 ),
                 const SizedBox(height: 16.0),
 
-
-                //BUTTON DATE 
+                //BUTTON DATE (A FUTURO)
                 /*ElevatedButton(
                   style: TextButton.styleFrom(
                     textStyle: const TextStyle(fontSize: 16),
@@ -194,9 +218,6 @@ void _registerUser(User user) async{
                   },
                   child: const Text('Registrar'),
                 ),
-
-
-                
               ],
             ),
           ))),

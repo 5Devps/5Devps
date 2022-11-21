@@ -4,6 +4,11 @@
         android:label="turismo_colombia"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+  <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBoNnd5esPPmOqs4HFUvysLc3_WTwgI83w"/>
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -20,6 +25,10 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+             <!-- TODO: Add your Google Maps API key here 
+             <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBoNnd5esPPmOqs4HFUvysLc3_WTwgI83w"/>-->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

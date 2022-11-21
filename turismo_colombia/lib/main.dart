@@ -1,13 +1,21 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:turismo_colombia/models/sites_adapter.dart';
+
 import 'firebase_options.dart';
 import 'pages/splash_page.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await Hive.initFlutter();
+  Hive.registerAdapter(SiteAdapterAdapter());
+  await Hive.openBox<SiteAdapter>('db');
 
   runApp(const MyApp());
 }

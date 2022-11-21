@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:turismo_colombia/pages/home_page.dart';
+
 import 'package:turismo_colombia/pages/tourist_sites.dart';
 import 'package:turismo_colombia/repository/firebase_api.dart';
 import 'register_page.dart';
 
 import '../models/user.dart';
-
-
 
 //PAGINA LOGIN
 class LoginPage extends StatefulWidget {
@@ -94,10 +94,9 @@ class _LoginPageState extends State<LoginPage> {
           {
             msg = "Ingreso exitoso, Bienvenido ";
             _showMsg(msg);
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const TouristSitesPage()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const HomePage()));
+            //builder: (context) => const TouristSitesPage()));
           }
           break;
       }

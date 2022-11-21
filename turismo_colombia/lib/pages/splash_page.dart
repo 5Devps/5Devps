@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turismo_colombia/pages/home_page.dart';
 
 import 'login_page.dart';
 
@@ -11,18 +12,18 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
-  void initState(){
+  void initState() {
     _closeSplash();
     super.initState();
   }
 
-Future<void> _closeSplash() async{
-Future.delayed(const Duration(seconds: 2), () async{
-  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
-});
-
+  Future<void> _closeSplash() async {
+    Future.delayed(const Duration(seconds: 2), () async {
+      Navigator.pushReplacement(
+          //context, MaterialPageRoute(builder: (context) => const HomePage()));
+          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+    });
   }
 
   @override
@@ -30,15 +31,11 @@ Future.delayed(const Duration(seconds: 2), () async{
     return const Scaffold(
       backgroundColor: Colors.lightGreen,
       body: Center(
-        child: (
-        Image(image: AssetImage('assets/images/logo.png'),
-          width: 150, height: 150)
+        child: (Image(
+            image: AssetImage('assets/images/logo.png'),
+            width: 150,
+            height: 150)),
       ),
-      
-      
-      ),
-      
-
     );
   }
 }

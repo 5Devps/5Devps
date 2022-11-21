@@ -11,7 +11,7 @@ import 'package:flutter/foundation.dart'
 //import 'firebase_options.dart';
 
 //await Firebase.initializeApp(
- //options: DefaultFirebaseOptions.currentPlatform,
+//options: DefaultFirebaseOptions.currentPlatform,
 //);
 /// ```
 class DefaultFirebaseOptions {
@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '968414616965',
     projectId: 'turismo-colombiapp',
     storageBucket: 'turismo-colombiapp.appspot.com',
-    iosClientId: '968414616965-6gfavre1n1h63u7de72vdi7fvs78p2jk.apps.googleusercontent.com',
+    iosClientId:
+        '968414616965-6gfavre1n1h63u7de72vdi7fvs78p2jk.apps.googleusercontent.com',
     iosBundleId: 'edu.UdA.turismoColombia',
   );
 }
